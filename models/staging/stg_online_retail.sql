@@ -29,7 +29,7 @@ renamed as (
     select
         Invoice as invoice_number,
         StockCode as stock_code,
-        Description as description,
+        trim(Description) as description,
         Quantity as quantity,
         strptime(InvoiceDate, '%m/%d/%Y %H:%M') as invoice_datetime,
         Price::decimal(10, 2) as unit_price,
