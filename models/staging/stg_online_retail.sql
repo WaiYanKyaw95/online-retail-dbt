@@ -1,8 +1,8 @@
 with
     source as (
-        select Invoice, StockCode, Description, Quantity, InvoiceDate, Price, "Customer ID", Country from raw.online_retail_2009_2010
+        select Invoice, StockCode, Description, Quantity, InvoiceDate, Price, "Customer ID", Country from {{ source('raw', 'online_retail_2009_2010') }}
         union all
-        select Invoice, StockCode, Description, Quantity, InvoiceDate, Price, "Customer ID", Country from raw.online_retail_2010_2011
+        select Invoice, StockCode, Description, Quantity, InvoiceDate, Price, "Customer ID", Country from {{ source('raw', 'online_retail_2010_2011') }}
 ),
 
 renamed as (
