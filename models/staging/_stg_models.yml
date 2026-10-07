@@ -24,3 +24,6 @@ models:
       - name: source_file
         data_tests:
           - not_null
+      - name: is_duplicate
+        data_tests:
+          - not_null
