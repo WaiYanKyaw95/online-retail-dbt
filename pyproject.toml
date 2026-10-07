@@ -1,0 +1,15 @@
+[project]
+name = "online-retail"
+version = "0.1.0"
+description = "dbt project modeling the Online Retail II dataset into a star schema, using DuckDB and BigQuery."
+readme = "README.md"
+authors = [
+    { name = "WaiYanKyaw95", email = "waiyankyawwyk2012@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "dbt-bigquery>=1.12.1",
+    "dbt-core>=1.12.5",
+    "dbt-duckdb>=1.11.0",
+    "duckdb>=1.5.6",
+]

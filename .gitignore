@@ -1,0 +1,14 @@
+# dbt
+target/
+dbt_packages/
+logs/
+
+# raw data
+data/
+
+# database
+*.duckdb
+*.duckdb.wal
+
+# python
+__pycache__/
