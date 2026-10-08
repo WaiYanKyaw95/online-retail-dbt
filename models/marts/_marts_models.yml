@@ -9,9 +9,19 @@ models:
       - name: stock_code
         data_tests:
           - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_product')
+                field: stock_code
       - name: customer_id
         data_tests:
           - not_null
       - name: invoice_date
         data_tests:
           - not_null
+  - name: dim_product
+    columns:
+      - name: stock_code
+        data_tests:
+          - not_null
+          - unique
