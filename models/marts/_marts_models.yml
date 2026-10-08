@@ -2,6 +2,7 @@ version: 2
 
 models:
   - name: fct_sales
+    description: "One row per invoice line: each item on a sale or cancellation invoice. Cancellations have negative quantities. line_amount is quantity multiplied by unit price for that line."
     columns:
       - name: invoice_number
         data_tests:
@@ -14,12 +15,19 @@ models:
                 to: ref('dim_product')
                 field: stock_code
       - name: customer_id
+        description: "Customer ID. Missing IDs (about 22%) are set to 'unknown'."
         data_tests:
           - not_null
       - name: invoice_date
+        description: "Date only; to join dim_date table."
         data_tests:
           - not_null
+      - name: line_amount
+        description: "Derived from multiplication of quantity and unit price for the line."
+      - name: is_cancellation
+        description: "Derived from invoice numbers that start with C."
   - name: dim_product
+    description: "One stock code and description for each unique product (5305 products in total). When a product has several descriptions, the most frequent non-null one is used. Missing descriptions are set to 'Unknown'."
     columns:
       - name: stock_code
         data_tests:

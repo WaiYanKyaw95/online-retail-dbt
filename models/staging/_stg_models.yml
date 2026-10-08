@@ -2,28 +2,41 @@ version: 2
 
 models:
   - name: stg_online_retail
+    description: "One row per invoice line from both source files. Overlap removed, duplicates flagged."
     columns:
       - name: invoice_number
+        description: "Invoice ID. Starts with C for cancellation."
         data_tests:
           - not_null
+      - name: customer_id
+        description: "Customer ID as text. Null for about 22% of rows."
       - name: invoice_datetime
+        description: "Timestamp parsed from source text. Minute precision with no seconds."
         data_tests:
           - not_null
+      - name: description
+        description: "Product description. Trimmed; can be null or contain staff notes."
       - name: stock_code
+        description: "Item/product stock code in text. Some codes are not products (like M for manual adjustment)."
         data_tests:
           - not_null
       - name: quantity
+        description: "Quantity sold, negative qty for cancellations."
         data_tests:
           - not_null
       - name: unit_price
+        description: "Unit price in 2 decimal places, currency is pounds sterling."
         data_tests:
           - not_null
       - name: country
+        description: "Customer location"
         data_tests:
           - not_null
       - name: source_file
+        description: "Which raw file the row came from: online_retail_2009_2010 or online_retail_2010_2011"
         data_tests:
           - not_null
       - name: is_duplicate
+        description: "True for extra copies of identical rows (11,812); the first copy is false. Filter is_duplicate = false for deduplicated totals."
         data_tests:
           - not_null
