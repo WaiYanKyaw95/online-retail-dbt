@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: fct_sales
+    columns:
+      - name: invoice_number
+        data_tests:
+          - not_null
+      - name: stock_code
+        data_tests:
+          - not_null
+      - name: customer_id
+        data_tests:
+          - not_null
+      - name: invoice_date
+        data_tests:
+          - not_null
