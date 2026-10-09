@@ -35,12 +35,20 @@ models:
       - name: is_cancellation
         description: "Derived from invoice numbers that start with C."
   - name: dim_product
-    description: "One stock code and description for each unique product (5305 products in total). When a product has several descriptions, the most frequent non-null one is used. Missing descriptions are set to 'Unknown'."
+    description: "One row per stock code (5,305), including 26 non-product codes flagged by is_product. When a product has several descriptions, the most frequent non-null one is used. Missing descriptions are set to 'Unknown'."
     columns:
       - name: stock_code
         data_tests:
           - not_null
           - unique
+      - name: is_product
+        description: "True for real merchandise. Filter is_product = true for product analysis like top sellers or product revenue."
+      - name: product_category
+        description: "Type of stock code: 'product' for merchandise, or one of six special categories (shipping, fee, etc.) from the special_stock_codes seed."
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['adjustment', 'fee', 'gift_voucher', 'product', 'sample', 'shipping', 'test']
   - name: dim_customer
     description: "One row per customer (5943, including unknown). A unique customer id with their first and last purchase date, and net revenue."
     columns:
