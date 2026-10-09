@@ -1,0 +1,27 @@
+stock_code,category,reason
+POST,shipping,Description is POSTAGE
+DOT,shipping,Description is DOTCOM POSTAGE
+C2,shipping,Description is CARRIAGE
+C3,shipping,No description; assumed shipping like C2
+M,adjustment,Description is Manual
+m,adjustment,Description is Manual (lowercase variant of M)
+ADJUST,adjustment,Description is a manual adjustment by staff
+ADJUST2,adjustment,Description is a manual adjustment by staff
+B,adjustment,Description is Adjust bad debt
+D,adjustment,Description is Discount
+BANK CHARGES,fee,Description is Bank Charges
+AMAZONFEE,fee,Description is AMAZON FEE
+CRUK,fee,Description is CRUK Commission
+TEST001,test,Description says test product
+TEST002,test,Description says test product
+S,sample,Description is SAMPLES
+GIFT,gift_voucher,No description; assumed gift voucher like gift_0001 codes
+gift_0001_10,gift_voucher,Gift voucher
+gift_0001_20,gift_voucher,Gift voucher
+gift_0001_30,gift_voucher,Gift voucher
+gift_0001_40,gift_voucher,Gift voucher
+gift_0001_50,gift_voucher,Gift voucher
+gift_0001_60,gift_voucher,No description; assumed gift voucher by code pattern
+gift_0001_70,gift_voucher,Gift voucher
+gift_0001_80,gift_voucher,Gift voucher
+gift_0001_90,gift_voucher,No description; assumed gift voucher by code pattern

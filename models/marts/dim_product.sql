@@ -29,9 +29,12 @@ with
     products as (
         select
             fl.stock_code as stock_code,
+            coalesce(s.category, 'product') as product_category,
+            coalesce(s.category, 'product') = 'product' as is_product,
             coalesce(f.description, 'Unknown') as description
         from full_list fl
         left join filtered f on fl.stock_code = f.stock_code
+        left join {{ ref('special_stock_codes') }} s on fl.stock_code = s.stock_code
     )
 
 select * from products
