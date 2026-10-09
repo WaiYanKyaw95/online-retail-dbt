@@ -1,0 +1,13 @@
+version: 2
+
+seeds:
+  - name: special_stock_codes
+    description: "Hand-classified from a review of stock code descriptions. Codes not listed here are treated as products. Includes respective stock codes, categories and reasons."
+    columns:
+      - name: stock_code
+        data_tests:
+          - not_null
+          - unique
+      - name: category
+        data_tests:
+          - not_null
