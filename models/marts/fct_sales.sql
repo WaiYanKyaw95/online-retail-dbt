@@ -1,5 +1,5 @@
 with
-    renamed as (
+    transformed as (
         select
             invoice_number,
             stock_code,
@@ -14,4 +14,4 @@ with
         from {{ ref('stg_online_retail') }}
     )
 
-select * from renamed
+select * from transformed
