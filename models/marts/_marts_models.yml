@@ -26,6 +26,10 @@ models:
         description: "Date only; to join dim_date table."
         data_tests:
           - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_key
       - name: line_amount
         description: "Derived from multiplication of quantity and unit price for the line."
       - name: is_cancellation
@@ -50,3 +54,12 @@ models:
         description: "When they last made a purchase. Cancellation is excluded."
       - name: net_revenue
         description: "Sum of line_amount. Includes cancellations (negative), excludes flagged duplicates."
+  - name: dim_date
+    description: "One row per day with enriched information (from 2009-01-01 to 2011-12-31). Includes year, quarter, month number, month name, day, day of week and weekend."
+    columns:
+      - name: date_key
+        data_tests:
+          - not_null
+          - unique
+      - name: day_of_week
+        description: "Day of week - 0 is Sunday and 6 is Saturday (DuckDB). 1 is Sunday and 7 is Saturday (BigQuery)."
