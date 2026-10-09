@@ -18,6 +18,10 @@ models:
         description: "Customer ID. Missing IDs (about 22%) are set to 'unknown'."
         data_tests:
           - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_customer')
+                field: customer_id
       - name: invoice_date
         description: "Date only; to join dim_date table."
         data_tests:
@@ -33,3 +37,16 @@ models:
         data_tests:
           - not_null
           - unique
+  - name: dim_customer
+    description: "One row per customer (5943, including unknown). A unique customer id with their first and last purchase date, and net revenue."
+    columns:
+      - name: customer_id
+        data_tests:
+          - not_null
+          - unique
+      - name: first_purchase_date
+        description: "When they first made a purchase. Cancellation is excluded and 61 nulls for cancellation-only customers."
+      - name: last_purchase_date
+        description: "When they last made a purchase. Cancellation is excluded."
+      - name: net_revenue
+        description: "Sum of line_amount. Includes cancellations (negative), excludes flagged duplicates."
