@@ -1,0 +1,7 @@
+online_retail:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: online_retail.duckdb
+      threads: 1
